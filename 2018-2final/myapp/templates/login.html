@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <link rel="shortcut icon" href="../static/pic/title.ico" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/bootstrap.min.js" type="text" rel="text/javascript"></script>
+    <script src="../static/js/jquery-3.3.1.min.js" type="text/css" rel="text/javascript"></script>
+</head>
+<body>
+
+    {% include "base.html" %}
+        <div class="container">
+        <div class="row">
+<form action="login" method="post" class="form-inline">
+    <table>
+        <tr>
+            <td>{{ form.username.label }}</td>
+            <td>{{ form.username(class='form-control') }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label }}</td>
+            <td>{{ form.password(class='form-control') }}</td>
+        </tr>
+        <tr><td>{{ form.submit(class="btn btn-primary") }}</td></tr>
+    </table>
+{# 用来实现在配置中激活的csrf保护#}
+    {{ form.csrf_token }}
+</form>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>听力入门</title>
+    <link rel="shortcut icon" href="../static/pic/title.ico" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/bootstrap.min.js" type="text" rel="text/javascript"></script>
+    <script src="../static/js/jquery-3.3.1.min.js" type="text/css" rel="text/javascript"></script>
+</head>
+<body>
+
+
+    {% include "base.html" %}
+
+
+
+
+    {% for item in files %}
+        <div class="card">
+            <h5 class="card-header">
+                <a href="/listenIt?id={{ item.id }}">{{ item.file_name[0] }}</a>
+
+            </h5>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    {% endfor %}
+
+        <br>
+    总页数：{{ paginate.pages }}
+    <br>
+    总共有{{ paginate.total }}条数据
+    <br>
+    当前页数：{{ paginate.page }}
+    <br>
+
+
+    <ul class="pagination mt-2" id="pageNum" style="margin-left: 40%">
+        {% if paginate.has_prev %}
+            <li class="page-item"><a href="entryLevel?page={{ paginate.prev_num }}">上一页</a></li>&ensp;
+        {% endif %}
+
+        {%  for i in  paginate.iter_pages() %}
+            <li class="page-item"><a href="entryLevel?page={{ i }}">{{ i }}</a></li>&ensp;
+        {% endfor %}
+
+        {% if paginate.has_next %}
+            <li class="page-item"><a href="entryLevel?page={{ paginate.next_num }}">下一页</a></li>&ensp;
+        {% endif %}
+    </ul>
+
+</body>
+</html>

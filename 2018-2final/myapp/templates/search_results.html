@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery-3.3.1.min.js" type="text/css" rel="text/javascript"></script>
+    <script src="../static/js/bootstrap.min.js" type="text" rel="text/javascript"></script>
+</head>
+<body>
+    {% include "base.html" %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>搜索关键词： "{{query}}"</h1>
+</div>
+
+<ul class="posts">
+    {% for result in results %}
+
+        <div class="card">
+            <h5 class="card-header">
+                <a href="/listenIt?id={{ result['_id'] }}">{{ result['_source']['file_name'][0] }}</a>
+            </h5>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    {% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>
